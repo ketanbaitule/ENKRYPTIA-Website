@@ -1,6 +1,16 @@
+import { login } from "@/utils/auth/action";
+import { createClient } from "@/utils/supabase/server";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
-export default function Login() {
+export default async function Login() {
+  const client = await createClient();
+  const user = (await client.auth.getUser()).data.user;
+
+  if (user) {
+    redirect("/dashboard");
+  }
+
   return (
     <section className="">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
@@ -9,7 +19,7 @@ export default function Login() {
             <h1 className="text-2xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
               Login
             </h1>
-            <form className="space-y-4 md:space-y-6" action="#">
+            <form className="space-y-4 md:space-y-6">
               <div>
                 <label
                   htmlFor="email"
@@ -51,7 +61,7 @@ export default function Login() {
                 </a>
               </div>
               <button
-                type="submit"
+                formAction={login}
                 className="w-full text-black bg-primary hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg px-5 py-2.5 text-center"
               >
                 Sign in

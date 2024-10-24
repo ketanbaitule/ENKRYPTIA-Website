@@ -1,3 +1,4 @@
+import { signup } from "@/utils/auth/action";
 import Link from "next/link";
 
 export default function SignUp() {
@@ -9,7 +10,7 @@ export default function SignUp() {
             <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
               Sign up
             </h1>
-            <form className="space-y-4 md:space-y-6" action="#">
+            <form className="space-y-4 md:space-y-6">
               <div>
                 <label
                   htmlFor="email"
@@ -59,7 +60,7 @@ export default function SignUp() {
                 />
               </div>
               <button
-                type="submit"
+                formAction={signup}
                 className="w-full text-black bg-primary hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg  px-5 py-2.5 text-center"
               >
                 Sign Up
