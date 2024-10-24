@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 export default async function SignUpSetup() {
   const client = await createClient();
 
-  const data = (await client.from("user_role").select()).data;
+  const data = await client.from("user_role").select("*");
 
   if (data) redirect("/dashboard");
 
