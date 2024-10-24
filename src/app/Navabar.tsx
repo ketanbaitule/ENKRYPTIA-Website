@@ -3,10 +3,12 @@ import { createClient } from "@/utils/supabase/client";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Session } from "@supabase/supabase-js";
+import { useRouter } from "next/navigation";
 
 export default function Navbar() {
   const [user, setUser] = useState<Session | null>(null);
   const supabase = createClient();
+  const router = useRouter();
 
   useEffect(() => {
     const { data } = supabase.auth.onAuthStateChange((event, session) => {
@@ -32,6 +34,7 @@ export default function Navbar() {
               <button
                 onClick={async () => {
                   await supabase.auth.signOut();
+                  router.refresh();
                 }}
               >
                 Logout
