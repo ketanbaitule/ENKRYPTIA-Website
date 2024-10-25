@@ -30,7 +30,10 @@ export default async function StaffDashboard() {
               <td className="px-6 py-4 ">{salesPerson.user_id}</td>
               <td className="px-6 py-4">{salesPerson.name}</td>
               <td className="px-6 py-4">
-                <Link href={`/salesperson/${salesPerson.user_id}`}>
+                <Link
+                  className="bg-primary/50 px-4 py-2 rounded-2xl"
+                  href={`/salesperson/${salesPerson.user_id}`}
+                >
                   View
                 </Link>
               </td>
