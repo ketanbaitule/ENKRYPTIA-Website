@@ -27,5 +27,5 @@ export async function getAgencyId({ salespersonId }: {salespersonId: string}){
 export async function getLocationHistory({salespersonId} : {salespersonId: string}){ 
     const client = await createClient();
     const data = (await client.from("location_tracker").select("*").eq("salesperson_id", salespersonId).order("datetime", {ascending: false})).data;
-    return data!.map((location) => {return [parseFloat((location.lat as number).toFixed(2)), parseFloat((location.long as number).toFixed(2))]});
+    return data!.map((location) => {return [location.lat as number, location.long as number]});
 }

@@ -23,9 +23,9 @@ export default function Navbar() {
     return () => data.subscription.unsubscribe();
   });
   return (
-    <div className="flex items-center justify-center bg-primary text-black">
+    <div className="flex items-center justify-center text-primary border-b-2">
       <nav className="container flex flex-row justify-between p-4">
-        <div className="text-2xl">Sales Path</div>
+        <div className=" font-semibold text-2xl">Sales Path</div>
         <div className="flex gap-x-4 text-xl">
           {user ? (
             <>
